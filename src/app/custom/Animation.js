@@ -9,12 +9,12 @@ export default class Animation {
     }
 
     async start() {
-
+        
         this._tl.to(this._selectors.list, { id: 'listUp', y: '-50px' })
             .to(this._selectors.list, { id: 'listDown', y: '0' })
             .to(this._selectors.listItems[0], { id: 'listItem0', y: '100px', opacity: 0 })
-            .to(this._selectors.listItems[1], { id: 'listDown1', y: '100px', opacity: 0 }, '<')
-            .to(this._selectors.listItems[2], { id: 'listDown2', y: '100px', opacity: 0 }, '<')
+            .to(this._selectors.listItems[1], { id: 'listItem1', y: '100px', opacity: 0 }, '<')
+            .to(this._selectors.listItems[2], { id: 'listItem2', y: '100px', opacity: 0 }, '<')
             .to(this._selectors.truckBtnBg, { id: 'truckBtnScaleUp', scale: '1.2', transformOrigin: 'center' })
             .to(this._selectors.truckBtnBg, { id: 'truckBtnScaleDown', scale: '1', transformOrigin: 'center' })
             .to(this._selectors.container, { id: 'container', opacity: 1 })
@@ -30,8 +30,6 @@ export default class Animation {
             .to(this._selectors.truck, { id: 'truckMovement', x: '500px', ease: Elastic.easeInOut.config(5, 1.5), opacity: '0', duration: 3 })
             .to(this._selectors.shippedLabel, { id: 'shippedLabel', opacity: '1' })
 
-
-
         this._selectors.playBtn.addEventListener('click', () => this._startAnimation())
         this._selectors.truckBtn.addEventListener('click', () => this._startAnimation())
         this._selectors.pauseBtn.addEventListener('click', () => this._pauseAnimation())
@@ -42,7 +40,6 @@ export default class Animation {
         if (this._tl.paused()) {
             this._tl.play();
         } else {
-            console.log('dsds')
             this._tl.restart();
         }
     }
