@@ -1,5 +1,5 @@
-import { Elastic } from "gsap/all";
 import gsap from "gsap/gsap-core";
+import { Elastic } from "gsap/gsap-core";
 import selectors from "./selectors";
 
 export default class Animation {
@@ -27,9 +27,9 @@ export default class Animation {
             .to(this._selectors.frontWheelsBack, { id: 'frontWheelsBack', opacity: 1 }, '<')
             .to(this._selectors.frontWheel1, { id: 'frontWheel1', opacity: 1 }, '<')
             .to(this._selectors.frontWheel2, { id: 'frontWheel2', opacity: 1 }, '<')
-            .to(this._selectors.truck, { id: 'truckMovement', x: '-230px', duration: 1 })
-            .to(this._selectors.truck, { id: 'truckMovement', x: '500px', opacity: '0', duration: 1 })
+            .to(this._selectors.truck, { id: 'truckMovement', x: '500px', ease: Elastic.easeInOut.config(5, 1.5), opacity: '0', duration: 3 })
             .to(this._selectors.shippedLabel, { id: 'shippedLabel', opacity: '1' })
+
 
 
         this._selectors.playBtn.addEventListener('click', () => this._startAnimation())
@@ -39,19 +39,19 @@ export default class Animation {
     }
 
     _startAnimation() {
-        if(this._tl.paused()){
+        if (this._tl.paused()) {
             this._tl.play();
-        }else{
+        } else {
             console.log('dsds')
             this._tl.restart();
         }
     }
 
-    _pauseAnimation(){
+    _pauseAnimation() {
         this._tl.pause()
     }
 
-    _reverseAnimation(){
+    _reverseAnimation() {
         this._tl.reverse();
     }
 }
